@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free outdated content finder</title>
+<meta name="description" content="A free, open-source tool that reads your sitemap and ranks your blog articles by how likely they are to contain outdated facts: past years, versions, prices and time-relative wording.">
+<link rel="canonical" href="https://eeatclean.github.io/outdated-content-finder/">
+<link rel="icon" href="/favicon.png">
+<link rel="stylesheet" href="/assets/style.css">
+<meta property="og:title" content="Free outdated content finder">
+<meta property="og:description" content="Rank your blog articles by how likely they are to contain outdated facts, starting from your sitemap.">
+<meta property="og:url" content="https://eeatclean.github.io/outdated-content-finder/">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "outdated-content-finder",
+  "description": "Reads a website's sitemap and ranks its pages by how likely they are to contain outdated facts.",
+  "codeRepository": "https://github.com/eeatclean/outdated-content-finder",
+  "programmingLanguage": "Python",
+  "license": "https://opensource.org/licenses/MIT",
+  "isAccessibleForFree": true,
+  "author": { "@type": "Person", "name": "Ahmed EL JAOUARI", "url": "https://eeatclean.com/about.html" },
+  "publisher": { "@type": "Organization", "name": "EEATClean", "url": "https://eeatclean.com/" }
+}
+</script>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/assets/logo.webp" alt="" width="30" height="30">EEATClean</a>
+    <nav aria-label="Main">
+      <a href="/">About EEATClean</a>
+      <a href="https://github.com/eeatclean/outdated-content-finder">GitHub</a>
+      <a href="https://eeatclean.com/">eeatclean.com</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">Free and open source</p>
+    <h1>Which of your articles are most likely out of date?</h1>
+    <p class="lead">outdated-content-finder reads every page in your sitemap and ranks them by how many time-sensitive claims they contain. As a result, you know which articles to check first, instead of rereading the whole blog.</p>
+    <div class="cta-row">
+      <a class="cta" href="https://github.com/eeatclean/outdated-content-finder">Get it on GitHub</a>
+      <span class="note">Free, no account, no AI calls.</span>
+    </div>
+
+    <h2>Why not just start with the oldest posts?</h2>
+    <p>Starting with your oldest posts sounds logical. Yet age is a poor guide. A two-year-old opinion piece can still be right, while a three-month-old tutorial that quotes a price can already be wrong.</p>
+    <p>Our own audit showed it clearly. When we checked 23 of our articles, only 1 correction in 4 came from a fact that had changed since publication. So the tool ranks pages by <strong>risk</strong>, not by age.</p>
+
+    <h2>What it looks for</h2>
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>Signal</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>A past year in the title</td><td>"Best WordPress hosting in 2023"</td></tr>
+        <tr><td>A past year presented as current</td><td>"The best free plugins of 2023 are listed below."</td></tr>
+        <tr><td>A future event dated in the past</td><td>"Google will launch the update in 2024."</td></tr>
+        <tr><td>A version or model number</td><td>"WordPress 6.1", "iOS 16"</td></tr>
+        <tr><td>A price or plan</td><td>"$2.95 per month", "free plan"</td></tr>
+        <tr><td>Wording that depends on the date</td><td>"currently", "the latest version", "this year"</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>It reads English, French, Spanish and German. It also leaves history alone: "founded in 2015" or "released in 2010" describe the past, so they never raise a flag.</p>
+
+    <h2>What you get</h2>
+    <p>First, a ranked list of your pages, with a score for each one. Then, if you ask for it, a short report that quotes the exact sentences to check on each page. You can also export everything to a spreadsheet.</p>
+    <pre><code>  # score  age  url
+  1    18   3y  https://example.com/blog/best-wordpress-hosting/
+  2    15   2y  https://example.com/blog/php-requirements/</code></pre>
+
+    <h2>How to run it</h2>
+    <p>The tool runs on any computer with Python 3.9 or newer. If you have never used a terminal, ask your developer or your agency: it takes them two minutes. Otherwise, these three lines are enough:</p>
+    <pre><code>git clone https://github.com/eeatclean/outdated-content-finder.git
+cd outdated-content-finder
+python3 -m outdated_content_finder https://yourblog.com --markdown report.md</code></pre>
+    <p>The tool waits one second between pages and follows your <code>robots.txt</code> rules, so it is gentle on your server. The full list of options is in the <a href="https://github.com/eeatclean/outdated-content-finder#usage">README</a>.</p>
+
+    <h2>What to do with the results</h2>
+    <p>The tool finds <strong>suspects</strong>. It can't tell you whether a sentence is wrong, because only the source can do that. So, for each flagged sentence, open the page that owns the fact: the vendor's release notes, the pricing page, the standard or the regulator. Then follow two simple rules:</p>
+    <ol>
+      <li><strong>No source, no change.</strong> If no official page proves the sentence wrong, leave it alone and note it.</li>
+      <li><strong>Keep the source next to the fix.</strong> Six months later, you will want to know why the sentence changed.</li>
+    </ol>
+    <p>For the full method, including Search Console checks and how to decide what to update first, read our guide on <a href="https://eeatclean.com/blog/how-to-find-outdated-content.html">how to find outdated content on your website</a>.</p>
+
+    <div class="card">
+      <p><strong>Checking the sources is the slow part.</strong> It takes hours per article, and that is why we built EEATClean. It checks the key claims of the articles you pick against current sources, and it shows each correction next to the source that proves it. <a href="https://eeatclean.com/">Try it on 3 articles.</a></p>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>outdated-content-finder is free software under the MIT license, by Ahmed EL JAOUARI. Questions? Email <a href="mailto:support@eeatclean.com">support@eeatclean.com</a> or <a href="https://github.com/eeatclean/outdated-content-finder/issues">open an issue</a>.</p>
+    <p>A project by <a href="https://eeatclean.com/">EEATClean</a>, a product of FunInformatique OÜ.</p>
+  </div>
+</footer>
+</body>
+</html>
